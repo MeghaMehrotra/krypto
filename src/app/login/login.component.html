@@ -1,0 +1,17 @@
+<div class="login-form">
+    <div class="clearfix">
+        <a href="/signup" class="pull-right">Sign up</a>
+    </div>
+    <form action="/" method="post">
+        <h2 class="text-center">Log in</h2>       
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="Username" required="required" #username>
+        </div>
+        <div class="form-group">
+            <input type="password" class="form-control" placeholder="Password" required="required" #password> 
+        </div>
+        <div class="form-group">
+            <button type="submit" (click)="login(username.value, password.value)" class="btn btn-primary btn-block">Log in</button>
+        </div>               
+    </form>
+  </div>

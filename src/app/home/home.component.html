@@ -1,0 +1,145 @@
+<nav class="navbar navbar-inverse bg-dark">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand">Kryptos</a>
+    </div>
+    <span class="nav navbar-nav navbar-right logout">
+      <i class="fas fa-sign-out-alt" (click)="logout()">Logout</i>
+    </span>
+    
+  </div>
+</nav>
+
+<div class="container">
+  <div class="col-sm-3" data-toggle="modal" data-target="#addModal" >
+    <a class="btn btn-warning btn-sm">
+        <span class="fa fa-user-o">Add Employee</span> 
+    </a>                      
+  </div>
+    <p>Associated Employees</p>            
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Mobile</th>
+          <th>City</th>
+          <th>Address</th>
+          <th>DOB</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let emp of empList"> 
+          <td>{{emp.firstName}}</td>
+          <td>{{emp.lastName}}</td>
+          <td>{{emp.mobile}}</td>
+          <td>{{emp.city}}</td>
+          <td>{{emp.address}}</td>
+          <td>{{emp.dob | date: 'mediumDate'}}</td>
+          <td>
+              <div class="row">
+                  <div class="col-sm-3" (click)="deleteEmployee(emp)">
+                    <a class="btn btn-danger btn-sm">
+                        <span class="fas fa-trash"></span> 
+                    </a>
+                  </div>
+                  <div class="col-sm-3" data-toggle="modal" data-target="#myModal" (click)="editEmp(emp)">
+                    <a class="btn btn-warning btn-sm">
+                        <span class="fas fa-edit"></span> 
+                    </a>                      
+                  </div>
+              </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="modal fade" id="myModal">
+        <div class="modal-dialog modal-md">
+          <div class="modal-content">          
+            <!-- Modal Header -->
+            <div class="modal-header">
+              <h4 class="modal-title">Update Employee Info</h4>
+              <button type="button" class="close" data-dismiss="modal" #closeEditModal>&times;</button>
+            </div>            
+            <!-- Modal body -->
+            <div class="modal-body">
+                <form [formGroup]="empDetail" (submit)="updateEmp()">
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="form-group">
+                                <input type="text" class="form-control" formControlName="firstName" placeholder="First Name">
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                <input type="text" class="form-control" formControlName="lastName" placeholder="Last Name">
+                            </div>                            
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" formControlName="address" placeholder="Address">
+                    </div>
+                    <div class="form-group">
+                      <input formControlName="dob" type="date"  class="form-control" />
+                   
+                   
+                      </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" formControlName="city" placeholder="City">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" formControlName="mobile" placeholder="Mobile">
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary btn-block" [disabled]="!empDetail.valid">Update</button>
+                    </div>     
+                </form>
+            </div>                     
+          </div>
+        </div>
+      </div>
+      <div class="modal fade" id="addModal" #myModal>
+        <div class="modal-dialog modal-md">
+          <div class="modal-content">          
+            <!-- Modal Header -->
+            <div class="modal-header">
+              <h4 class="modal-title">Add Employee</h4>
+              <button type="button" class="close" data-dismiss="modal" #myButton>&times;</button>
+            </div>            
+            <!-- Modal body -->
+            <div class="modal-body">
+                <form [formGroup]="empDetail" (submit)="addEmp()">
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="form-group">
+                                <input type="text" class="form-control" formControlName="firstName" placeholder="First Name">
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                <input type="text" class="form-control" formControlName="lastName" placeholder="Last Name">
+                            </div>                            
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" formControlName="address" placeholder="Address">
+                    </div>
+                    <div class="form-group">
+                        <input type="date" class="form-control" formControlName="dob" placeholder="DOB">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" formControlName="city" placeholder="City">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" formControlName="mobile" placeholder="Mobile">
+                    </div>
+                    <div class="form-group">
+                        <button type="submit"  class="btn btn-primary btn-block" [disabled]="!empDetail.valid" >Add</button>
+                    </div>     
+                </form>
+            </div>                     
+          </div>
+        </div>
+      </div>
+</div>
