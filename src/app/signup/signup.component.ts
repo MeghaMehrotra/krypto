@@ -10,6 +10,8 @@ import { CONSTANTS } from '../utils/constants';
 })
 export class SignupComponent implements OnInit {
   selectedRole: any = {};
+  @ViewChild('ln', { static: true }) lastName: ElementRef;
+  @ViewChild('fn', { static: true }) firstName: ElementRef;
   @ViewChild('confirmpass', { static: true }) confirmpass: ElementRef;
   roles: any = [];
 
@@ -20,10 +22,14 @@ export class SignupComponent implements OnInit {
   }
 
   doSignUp(email, pass) {
+    console.log(this.firstName.nativeElement.value);
+    console.log(this.lastName.nativeElement.value);
     console.log(this.confirmpass.nativeElement.value);
     if (pass === this.confirmpass.nativeElement.value) {
       const manager = {
         roles: this.selectedRole,
+        firstName : this.firstName.nativeElement.value,
+        lastName : this.lastName.nativeElement.value,
         username: email,
         password: pass,
       };

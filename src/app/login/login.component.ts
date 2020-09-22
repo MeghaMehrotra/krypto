@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams, HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { CONSTANTS } from '../utils/constants';
@@ -9,7 +9,7 @@ import { CONSTANTS } from '../utils/constants';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-
+  user: any;
   constructor(private router: Router, private httpClient: HttpClient) { }
 
   ngOnInit() {

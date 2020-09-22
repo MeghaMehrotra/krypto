@@ -1,20 +1,15 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">s
 <div class="login-form">
     <form>
-        <h2 class="text-center">Sign Up</h2>       
-        <div class="form-group">
-            <input type="text" class="form-control" placeholder="First Name" required="required" [(ngModel)]="firstName">
-        </div>
-        <div class="form-group">
-            <input type="text" class="form-control" placeholder="Last Name" required="required" [(ngModel)]="lastName">
-        </div>
-        <div class="form-group">
-            <input type="text" class="form-control" placeholder="Email" required="required" [(ngModel)]="email" disabled> 
-        </div>
-        <div class="form-group">
-            <input type="text" class="form-control" placeholder="Company" required="required" [(ngModel)]="company">
-        </div>
-        <div class="form-group">
-            <button type="submit" (click)="updateProfile()" class="btn btn-primary btn-block">Register</button>
-        </div>  
+        <h2 class="text-center">Profile</h2>       
+        <div class="card" #newItem>
+            <h1>{{user.firstName}} {{user.lastName}}</h1>
+            <p class="title">{{user.username}}</p>
+            <a href="#"><i class="fa fa-dribbble"></i></a>
+            <a href="#"><i class="fa fa-twitter"></i></a>
+            <a href="#"><i class="fa fa-linkedin"></i></a>
+            <a href="#"><i class="fa fa-facebook"></i></a>
+            <p><button>Contact</button></p>
+          </div>s
     </form>
   </div>
